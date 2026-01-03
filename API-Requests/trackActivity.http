@@ -1,0 +1,14 @@
+### GET request to example server
+POST http://localhost:8082/activity
+Content-Type: application/json
+
+{
+  "userId": 2,
+  "activityType": "RUNNING",
+  "duration": 45,
+  "calories": 320
+
+}
+
+
+###

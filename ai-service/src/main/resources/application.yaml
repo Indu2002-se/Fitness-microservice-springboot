@@ -2,7 +2,7 @@ spring:
   application:
     name: ai-service
   datasource:
-    driverClassName: com.mysql.jdbc.Driver
+    driverClassName: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://localhost:3306/FitnesUser_db?createDatabaseIfNotExist=true
     username: root
     password: Ihara12#
@@ -29,3 +29,8 @@ rabbitmq:
     name: activity.queue
   routing:
     key: activity.tracking
+
+gemini:
+  api:
+    url: https://generativelanguage.googleapis.com
+    key: AIzaSyDw2EOLUBl_F5v_UC_b-1P5MnwEwTPKnlQ

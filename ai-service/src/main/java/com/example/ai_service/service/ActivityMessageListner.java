@@ -16,10 +16,17 @@ public class ActivityMessageListner {
     private String queueName;
 
     private final RabbitTemplate rabbitTemplate;
+    private final ActivityAiService aiService;
 
     @RabbitListener(queues = "${rabbitmq.queue.name}")
     public void processActivity(Activity activity){
-        log.info("Processing activity: {}", activity.getId());
-
+        try {
+            log.info("Processing activity: {}", activity.getId());
+            String recommendation = aiService.generateRecomendation(activity);
+            log.info("Generated Recommendation: {}", recommendation);
+        } catch (Exception e) {
+            log.error("Error processing activity {}: {}", activity.getId(), e.getMessage(), e);
+            // You might want to add dead letter queue logic here
+        }
     }
 }
